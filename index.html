@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="stats">
+        <h3>Stats</h3>
+        <div class="stat-row"><span>Current number:</span><span id="cur"></span></div>
+        <div class="stat-row"><span>Done to do:</span><span id="don"></span></div>
+        <div class="stat-row"><span>Left to do:</span><span id="lef"></span></div>
+    </div>
+    <h1>To Do List</h1>
+    <div id="container">
+        <div id="Sunday" class="day-container"><h2>Sunday</h2><button class="butt" onclick="dd = 'Sunday'">Select</button></div>
+        <div id="Monday" class="day-container"><h2>Monday</h2><button class="butt" onclick="dd = 'Monday'">Select</button></div>
+        <div id="Tuesday" class="day-container"><h2>Tuesday</h2><button class="butt" onclick="dd = 'Tuesday'">Select</button></div>
+        <div id="Wednesday" class="day-container"><h2>Wednesday</h2><button class="butt" onclick="dd = 'Wednesday'">Select</button></div>
+        <div id="Thursday" class="day-container"><h2>Thursday</h2><button class="butt" onclick="dd = 'Thursday'">Select</button></div>
+        <div id="Friday" class="day-container"><h2>Friday</h2><button class="butt" onclick="dd = 'Friday'">Select</button></div>
+        <div id="Saturday" class="day-container"><h2>Saturday</h2><button class="butt" onclick="dd = 'Saturday'">Select</button></div>
+        <!-- აქ დაემატება მომხმარებლის მიერ შექმნილი მიზნები -->
+    </div> 
+
+    <div id="input_container">
+        <input type="text" id="list_input" placeholder="Enter your to do" >
+    
+        <button  id = "but" onclick="to_do_creation()">Add</button>
+        <button  id = "but" onclick="func2()">Clear</button>
+    </div>
+    
+
+    <div id="error">
+        <p id="error_code"></p>
+    </div>
+    <div id="footer">
+        <h3>Site presented by:</h3>
+        <p>Kote Wiklauri<br>Luka Citidze<br>Sergi Cixradze<br>Giorgi Nozadze</p>
+        <p><b>TDL</b> is a site these 4 people worked on to make your life easier!<br>
+            Site is still under development so if you encounter any bugs let us know :)</p>
+        
+        <button>Feedback</button>
+
+    </div>
+
+
+    
+    <script src="script.js">
+                
+    </script>
+</body>
+</html>
