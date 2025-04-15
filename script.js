@@ -11,13 +11,13 @@ document.getElementById("lef").textContent = c
 
 function to_do_creation(){
 
-    if(input.value !== "" && input.value.length < 45) { 
+    if(input.value !== "" ) { 
         //* defult setting if no days is chosen 
         let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
         let today = days[new Date().getDay()]; 
         
         let chosenDay = dd ? dd : today; //* if any of the days are chosen the day will have meaning and if not it will be null(line3)
-        let todayContainer = document.getElementById(chosenDay);
+        let todayContainer = document.getElementById(chosenDay).querySelector('.day-tasks');
 
 
         let text_div = document.createElement("div")
@@ -25,10 +25,13 @@ function to_do_creation(){
         //* input value
         let pp = document.createElement('p')    
         pp.textContent = input.value
-        pp.style.fontSize = "20px"
-        pp.style.marginTop = "7px".at
-        pp.style.marginLeft = "7px"
-        pp.style.margin = "14px"
+        pp.style.cssText = `
+            font-size: 20px;
+            margin: 14px;
+            white-space: normal;
+            word-break: break-word;
+            flex-grow: 1;
+        `;
         text_div.append(pp)
         
 
@@ -43,7 +46,6 @@ function to_do_creation(){
             width: 25px;
             position: absolute;
             right: 80px;
-            top: 11px;
             border: 2px solid #4e4caf;
             border-radius: 50%;
             background-color:rgb(123, 122, 180);
@@ -53,7 +55,7 @@ function to_do_creation(){
         `;
         button1.addEventListener("change", function () {  //*this function is mainly for checking of done goals and counting tham
             button1.style.animation = "none";
-            void button1.offsetWidth; // Trigger reflow to restart the animation
+            void button1.offsetWidth;
             button1.style.animation = "pop 0.3s ease";
             
             if (button1.checked) {
@@ -113,18 +115,17 @@ function to_do_creation(){
             position: relative;
             border: solid 2px;
             border-color: #4e4caf;
-            height: 50px;
             display: flex;
+            flex-wrap: wrap;
+            align-items: center;
             background: white;
             border-radius: 6px;
             margin-top: 10px;
-            box-shadow: 0px 3px 2px 0px #071b3a;`
-        
+            box-shadow: 0px 3px 2px 0px #071b3a;
+            padding-right: 160px;
+            min-height: 50px;`
         
 
-
-        
-        
 
         //* appending
         text_div.append(button1)
@@ -148,37 +149,59 @@ function to_do_creation(){
     else{
         input.value = ""
         document.getElementById('error_code').textContent = 'Text too long!'
-    }
-    function remove(){
-        text_div.innerHTML = ''
-        
+    }   
     
 }
-    
-
-}
-
-//* function for removing specific goals(line69 might be changed)
 
 
 //* function for removing evry goal
 function func2(){
+
+    document.getElementById("clear_confirm").style.display = "flex";
+
+}
+
+document.getElementById("yes").onclick = function () {
+    //* ყველა თასქის წაშლა
     let days = document.getElementsByClassName("day-container");
-    a = 0
-    totalGoalDone = 0
-    c = 0
-    document.getElementById("cur").textContent = a
-    document.getElementById("don").textContent = totalGoalDone
-    document.getElementById("lef").textContent = c
+    a = 0;
+    totalGoalDone = 0;
+    c = 0;
+    document.getElementById("cur").textContent = a;
+    document.getElementById("don").textContent = totalGoalDone;
+    document.getElementById("lef").textContent = c;
     for (let i = 0; i < days.length; i++) {
-        while (days[i].children.length > 2) {
-            days[i].removeChild(days[i].lastChild);
-        }
+        let taskList = days[i].querySelector('.day-tasks');
+        taskList.innerHTML = "";
+    }
+
+
+    document.getElementById("clear_confirm").style.display = "none";
+};
+
+document.getElementById("no").onclick = function () {
+    document.getElementById("clear_confirm").style.display = "none";
+};
+
+
+function toggleDay(dayId) {
+    const dayContainer = document.getElementById(dayId);
+    const taskList = dayContainer.querySelector('.day-tasks');
+    const toggleButton = dayContainer.querySelector('.toggle-button');
+    
+    if (taskList.style.display === 'none' || taskList.style.display === '') {
+        taskList.style.display = 'block';
+        toggleButton.textContent = 'Hide';  // Change button text to 'Hide'
+    } else {
+        taskList.style.display = 'none';
+        toggleButton.textContent = 'Show';  // Change button text to 'Show'
     }
 }
 
 
-
-
-
-
+window.onload = function () {
+    let taskLists = document.querySelectorAll('.day-tasks');
+    for (let i = 0; i < taskLists.length; i++) {
+        taskLists[i].style.display = 'block';
+    }
+};

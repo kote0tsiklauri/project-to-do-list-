@@ -10,20 +10,75 @@
 <body>
     <div id="stats">
         <h3>Stats</h3>
-        <div class="stat-row"><span>Current number:</span><span id="cur"></span></div>
-        <div class="stat-row"><span>Done to do:</span><span id="don"></span></div>
-        <div class="stat-row"><span>Left to do:</span><span id="lef"></span></div>
+        <div class="stat-row"><span>Current Task:</span><span id="cur"></span></div>
+        <div class="stat-row"><span>Completed:</span><span id="don"></span></div>
+        <div class="stat-row"><span>Remaining:</span><span id="lef"></span></div>
     </div>
     <h1>To Do List</h1>
     <div id="container">
-        <div id="Sunday" class="day-container"><h2>Sunday</h2><button class="butt" onclick="dd = 'Sunday'">Select</button></div>
-        <div id="Monday" class="day-container"><h2>Monday</h2><button class="butt" onclick="dd = 'Monday'">Select</button></div>
-        <div id="Tuesday" class="day-container"><h2>Tuesday</h2><button class="butt" onclick="dd = 'Tuesday'">Select</button></div>
-        <div id="Wednesday" class="day-container"><h2>Wednesday</h2><button class="butt" onclick="dd = 'Wednesday'">Select</button></div>
-        <div id="Thursday" class="day-container"><h2>Thursday</h2><button class="butt" onclick="dd = 'Thursday'">Select</button></div>
-        <div id="Friday" class="day-container"><h2>Friday</h2><button class="butt" onclick="dd = 'Friday'">Select</button></div>
-        <div id="Saturday" class="day-container"><h2>Saturday</h2><button class="butt" onclick="dd = 'Saturday'">Select</button></div>
-        <!-- აქ დაემატება მომხმარებლის მიერ შექმნილი მიზნები -->
+        <div id="Sunday" class="day-container">
+            <div class="day-header">
+                <h2>Sunday</h2>
+                <button class="butt toggle-button" onclick="toggleDay('Sunday')">Hide</button>
+                <button class="butt" onclick="dd = 'Sunday'">Select</button>
+            </div>
+            <div class="day-tasks"></div> <!-- This is where tasks will go -->
+        </div>
+        
+        <div id="Monday" class="day-container">
+            <div class="day-header">
+                <h2>Monday</h2>
+                <button class="butt toggle-button" onclick="toggleDay('Monday')">Hide</button>
+                <button class="butt" onclick="dd = 'Monday'">Select</button>
+            </div>
+            <div class="day-tasks"></div> <!-- This is where tasks will go -->
+        </div>
+        
+        <div id="Tuesday" class="day-container">
+            <div class="day-header">
+                <h2>Tuesday</h2>
+                <button class="butt toggle-button" onclick="toggleDay('Tuesday')">Hide</button>
+                <button class="butt" onclick="dd = 'Tuesday'">Select</button>
+            </div>
+            <div class="day-tasks"></div> <!-- This is where tasks will go -->
+        </div>
+        
+        <div id="Wednesday" class="day-container">
+            <div class="day-header">
+                <h2>Wednesday</h2>
+                <button class="butt toggle-button" onclick="toggleDay('Wednesday')">Hide</button>
+                <button class="butt" onclick="dd = 'Wednesday'">Select</button>
+            </div>
+            <div class="day-tasks"></div> <!-- This is where tasks will go -->
+        </div>
+        
+        <div id="Thursday" class="day-container">
+            <div class="day-header">
+                <h2>Thursday</h2>
+                <button class="butt toggle-button" onclick="toggleDay('Thursday')">Hide</button>
+                <button class="butt" onclick="dd = 'Thursday'">Select</button>
+            </div>
+            <div class="day-tasks"></div> <!-- This is where tasks will go -->
+        </div>
+        
+        <div id="Friday" class="day-container">
+            <div class="day-header">
+                <h2>Friday</h2>
+                <button class="butt toggle-button" onclick="toggleDay('Friday')">Hide</button>
+                <button class="butt" onclick="dd = 'Friday'">Select</button>
+            </div>
+            <div class="day-tasks"></div> <!-- This is where tasks will go -->
+        </div>
+        
+        <div id="Saturday" class="day-container">
+            <div class="day-header">
+                <h2>Saturday</h2>
+                <button class="butt toggle-button" onclick="toggleDay('Saturday')">Hide</button>
+                <button class="butt" onclick="dd = 'Saturday'">Select</button>
+            </div>
+            <div class="day-tasks"></div> <!-- This is where tasks will go -->
+        </div>
+
     </div> 
 
     <div id="input_container">
@@ -34,9 +89,19 @@
     </div>
     
 
+    <div id="clear_confirm">
+        <div>
+            <p>Are you sure you want to clear all tasks?</p>
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
     <div id="error">
         <p id="error_code"></p>
     </div>
+
+
     <div id="footer">
         <h3>Site presented by:</h3>
         <p>Kote Wiklauri<br>Luka Citidze<br>Sergi Cixradze<br>Giorgi Nozadze</p>

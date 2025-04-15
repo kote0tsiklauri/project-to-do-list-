@@ -81,7 +81,7 @@ h1{
 
 /** მომხმარებლისთვის შესაყვანი ჰილდის გასტილვა */
 #list_input {
-    width: 275px;  
+    width: 70%;  
     padding: 15px;  
     font-size: 18px;  
     border: 2px solid #ccc;
@@ -121,10 +121,14 @@ h1{
 /** -------------------------------------------- */
 
 
-/** დამატების ღილაკის გასტილვა */
+/** დამატების ღილაკის გასტილვა*/
+button{
+    cursor: pointer;
+}
+
 #but {
-    width: 55px;
-    height: 55px;
+    width: 20%;
+    aspect-ratio: 1/1;
     border: solid;
     border-radius: 4px;
     border-width: 2px;
@@ -144,6 +148,43 @@ h1{
     background-color: #4e4caf;
     
 }
+
+/** clear_confirmისგასტილვა */
+#clear_confirm {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#clear_confirm div {
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+}
+
+#clear_confirm button {
+    width: 15%;
+    aspect-ratio: 1/1;
+    border: solid;
+    border-radius: 4px;
+    border-width: 2px;
+    color: rgba(0, 0, 255, 0.514);
+    background-color: #feb6b8;
+    font-size: 15px;
+    box-shadow: 0px 5px 2px 0px rgb(76, 76, 100);
+}
+
+
+/** hide და select button გასტულვა */
 .butt {
     border-color: #4e4caf;
     border: solid 1px;
@@ -170,6 +211,8 @@ h1{
 #error_code {
     color: red;
 }
+
+/** სკროლბარის გასტილვა */
 ::-webkit-scrollbar {
     border-radius: 3px;
     background-color: #406091;
@@ -181,6 +224,7 @@ h1{
     border-radius: 3px;
 }
 
+/** statusის გასტილვა */
 #stats {
     aspect-ratio: 1 / 1;
     width: 10%;
@@ -201,6 +245,9 @@ h1{
     margin-bottom: 20px;
 }
 
+
+
+/** footerის გასტილვა */
 #footer {
     background-color: #03142e;
     width: 100%;
@@ -241,6 +288,7 @@ h1{
 }
 
 
+/** checkbox ანიმაცია */
 @keyframes pop {
     0% {
       transform: scale(1);
@@ -252,6 +300,10 @@ h1{
       transform: scale(1);
     }
 }
+
+
+
+/** რესპონსიულობა */
 @media only screen and (max-width: 1047px) {
     #footer button {
         border-color: #0c1d58;
@@ -279,7 +331,7 @@ h1{
     
 }
 
-@media screen and (max-width: 770px) and (min-width: 615px){
+@media screen and (max-width: 950px){
     body {
         display: flex;
         flex-direction: column;
@@ -294,7 +346,7 @@ h1{
         margin-bottom: 20px;
         aspect-ratio: auto;
         order: 3; 
-        display: flex;
+        display: block;
         justify-content: space-between; 
         
         flex-wrap: nowrap;
@@ -303,7 +355,7 @@ h1{
     }
 
     .stat-row {
-        display: flex;
+        display: inline;
         width: 100%;
     }
 
@@ -316,7 +368,6 @@ h1{
         font-size: 14px;
         padding: 5px;
     }
-
     #container {
         order: 2;
     }
@@ -330,6 +381,99 @@ h1{
     }
 
     #footer {
-        order: 5;
+        order: 6;
+    }
+    #error{
+        order: 5
+    }
+}
+
+
+
+
+@media screen and (max-width: 650px){
+    body {
+        margin: 20px 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #container,
+    #stats,
+    #input_container,
+    #footer {
+        width: 100%;
+    }
+
+    #container,
+    #input_container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #input_container{
+        height: 100px;
+        background: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    #list_input {
+        width: 50%;
+    }
+    #but{
+        width: 7%;
+        aspect-ratio: 1/1;
+    }
+    
+    #stats {
+        position: static;
+        width: 100%; 
+        margin-top: 20px;
+        margin-bottom: 20px;
+        aspect-ratio: auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .stat-row {
+        width: 100%;
+    }
+
+    #stats h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .stat-row span {
+        font-size: 14px;
+        margin-right: 10px; 
+    }
+}
+
+@media screen and (max-width: 640px){
+    #but{
+        width: 8.3%;
+    }
+}
+
+@media screen and (max-width: 540px){
+    #but{
+        width: 9.9%;
+    }
+}
+
+@media screen and (max-width: 450px){
+    #but{
+        width: 12%;
+    }
+}
+
+@media screen and (max-width: 350px){
+    #but{
+        width: 15%;
     }
 }
