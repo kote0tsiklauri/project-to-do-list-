@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    
+    <link rel="stylesheet" href="/challenge/challenge.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            
+            <img src="/Untitled.png" alt="error">
+            <h1>To Do List</h1>
+            <ul>
+                
+                <li><a href="/index/index.html">Home</a></li>
+                <li><a href="/weekly/weekly.html">Weekly</a></li>
+                <li><a href="/challenge/challenge.html">Challenge</a></li>
+            </ul>
+            <nav>
+
+    
+    </header>
+    <div id="stats">
+        <h3>Stats:</h3>
+        <div class="stat-row"><span>Total:</span><span id="cur"></span></div>
+        <div class="stat-row"><span>Completed:</span><span id="don"></span></div>
+        <div class="stat-row"><span>Remaining:</span><span id="lef"></span></div>
+    </div>
+    
+    <div id="container">
+
+    </div> 
+    <!--This is a div for user inputs-->
+    <div id="input_container">
+        <input type="number" id="time_input" placeholder="Time (mins)" min="1">
+
+        <input type="text" id="list_input" placeholder="Enter your to do" >
+    
+        <button  id = "but" onclick="to_do_creation()"><b>Add</b></button>
+        <button  id = "but" onclick="func2()"><b>Clear</b></button>
+    </div>
+    
+    <!--This is a div to make sure the user wants all their tasks cleared-->
+    <div id="clear_confirm">
+        <div>
+            <p>Are you sure you want to clear all tasks?</p>
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+    <!--error div-->
+    <div id="error">
+        <p id="error_code"></p>
+    </div>
+
+    <!--Footer for the site-->
+    <div id="footer">
+        <h3>Site presented by:</h3>
+        <p>Kote Wiklauri<br>Luka Citidze<br>Sergi Cixradze<br>Giorgi Nozadze</p>
+        <p><b>TDL</b> is a site these 4 people worked on to make your life easier!<br>
+            Site is still under development so if you encounter any bugs let us know :)</p>
+        
+        <button>Feedback</button>
+
+    </div>
+
+
+    
+    <script src="/challenge/challenge.js">
+                
+    </script>
+</body>
+</html>

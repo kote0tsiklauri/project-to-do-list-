@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/weekly/weekly.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <img src="/Untitled.png" alt="error">
+            <h1>To Do List</h1>
+            <ul>
+                
+                <li><a href="/index/index.html">Home</a></li>
+                <li><a href="/weekly/weekly.html">Weekly</a></li>
+                <li><a href="/challenge/challenge.html">Challenge</a></li>
+            </ul>
+            <nav>
+
+    
+    </header>
+    
     <div id="stats">
-        <h3>Stats</h3>
-        <div class="stat-row"><span>Current Task:</span><span id="cur"></span></div>
+        <h3>Stats:</h3>
+        <div class="stat-row"><span>Total:</span><span id="cur"></span></div>
         <div class="stat-row"><span>Completed:</span><span id="don"></span></div>
         <div class="stat-row"><span>Remaining:</span><span id="lef"></span></div>
     </div>
@@ -80,15 +95,15 @@
         </div>
 
     </div> 
-
+    <!--This is a div for user inputs-->
     <div id="input_container">
         <input type="text" id="list_input" placeholder="Enter your to do" >
     
-        <button  id = "but" onclick="to_do_creation()">Add</button>
-        <button  id = "but" onclick="func2()">Clear</button>
+        <button  id = "but" onclick="to_do_creation()"><b>Add</b></button>
+        <button  id = "but" onclick="func2()"><b>Clear</b></button>
     </div>
     
-
+    <!--This is a div to make sure the user wants all their tasks cleared-->
     <div id="clear_confirm">
         <div>
             <p>Are you sure you want to clear all tasks?</p>
@@ -96,12 +111,12 @@
             <button id="no">No</button>
         </div>
     </div>
-
+    <!--error div-->
     <div id="error">
         <p id="error_code"></p>
     </div>
 
-
+    <!--Footer for the site-->
     <div id="footer">
         <h3>Site presented by:</h3>
         <p>Kote Wiklauri<br>Luka Citidze<br>Sergi Cixradze<br>Giorgi Nozadze</p>
@@ -114,7 +129,7 @@
 
 
     
-    <script src="script.js">
+    <script src="/weekly/weekly.js">
                 
     </script>
 </body>
