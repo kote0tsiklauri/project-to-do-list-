@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Submit Complaint</title>
+    <link rel="stylesheet" href="/complaint/complaint.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Submit a Complaint</h1>
+        
+        <form class="complaint-form">
+            <div class="form-group">
+                <input type="text" id="name*" placeholder="Your Name" required />
+                <input type="email" id="email*" placeholder="Your Email" required />
+            </div>
+
+            <div class="form-group">
+                <textarea id="complaint" placeholder="Your experience..." rows="7" required></textarea>
+            </div>
+
+            <button type="submit" id="submit" >Submit</button>
+        </form>
+        <button type="button" id="back-button" onclick="goBack()">Go Back</button>
+    </div>
+
+    <script src="/complaint/complaint.js"></script>
+</body>
+</html>

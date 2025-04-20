@@ -9,14 +9,14 @@ document.getElementById("don").textContent = totalGoalDone
 document.getElementById("lef").textContent = c
 
 
-function to_do_creation(){
+function to_do_creation() {
 
-    if(input.value !== "" ) { 
+    if (input.value !== "") {
 
         let text_div = document.createElement("div")
 
         //* input value
-        let pp = document.createElement('p')    
+        let pp = document.createElement('p')
         pp.textContent = input.value
         pp.style.cssText = `
             font-size: 20px;
@@ -26,14 +26,11 @@ function to_do_creation(){
             flex-grow: 1;
         `;
         text_div.append(pp)
-        
 
         //* button1(checkbox if user has finished his goal)
         let button1 = document.createElement("input")
-        
         button1.type = "checkbox";
         button1.id = "complete";
-
         button1.style.cssText = `
             height: 25px;
             width: 25px;
@@ -46,37 +43,115 @@ function to_do_creation(){
             outline: none;
             transition: all 0.2s ease-in-out;
         `;
-        button1.addEventListener("change", function () {  //*this function is mainly for checking of done goals and counting tham
+
+        //* text timer display
+        const timerDisplay = document.createElement('span')
+        timerDisplay.style.cssText = `
+            position: absolute;
+            right: 160px;
+            font-weight: bold;
+            color: #009900;
+        `;
+
+        //* timer and countdown
+        let interval;
+        let timeLeft;
+        const originalTime = parseInt(document.getElementById('time_input').value);
+        const timeLimit = parseInt(document.getElementById('time_input').value);
+        if (!isNaN(timeLimit) && timeLimit > 0) {
+            timeLeft = timeLimit * 60;
+
+            function updateTimerDisplay() {
+                const hrs = Math.floor(timeLeft / 3600);
+                const mins = Math.floor((timeLeft % 3600) / 60);
+                const secs = timeLeft % 60;
+
+                const h = ('0' + hrs).slice(-2);
+                const m = ('0' + mins).slice(-2);
+                const s = ('0' + secs).slice(-2);
+
+                timerDisplay.textContent = `${h}:${m}:${s}`;
+            }
+
+            updateTimerDisplay();
+
+            interval = setInterval(() => {
+                timeLeft--;
+                if (timeLeft <= originalTime * 60 * 0.5 && timeLeft > originalTime * 60 * 0.25) {
+                    timerDisplay.style.color = "#f92"; // Orange when 50% time is passed
+                } else if (timeLeft <= originalTime * 60 * 0.25) {
+                    timerDisplay.style.color = "#ff8c00"; // Red/orange when 75% of time is passed
+                }
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    timerDisplay.textContent = "Time's up!";
+                    timerDisplay.style.color = "#ff0000";
+                    text_div.style.borderColor = "#ff595e";
+
+                    setTimeout(()=>{
+                        text_div.remove();
+                    }, 1000)
+                } else {
+                    updateTimerDisplay();
+                }
+            }, 1000);
+        } else {
+            timerDisplay.textContent = 'No timer';
+        }
+
+        //* this function is mainly for checking of done goals and counting them
+        button1.addEventListener("change", function () {
             button1.style.animation = "none";
             void button1.offsetWidth;
             button1.style.animation = "pop 0.3s ease";
-            
-            if (button1.checked) {
-                button1.style.background = "#4e4caf"
-                pp.style.textDecoration = "line-through";
-                totalGoalDone += 1
-                c -= 1
-                document.getElementById("lef").textContent = c
-                document.getElementById("don").textContent = totalGoalDone
 
-                timerDisplay.style.color = "#00ff00"
-                clearInterval(interval)
-                // Do something when checked
+            if (button1.checked) {
+                button1.style.background = "#4e4caf";
+                pp.style.textDecoration = "line-through";
+                totalGoalDone += 1;
+                c -= 1;
+                document.getElementById("lef").textContent = c;
+                document.getElementById("don").textContent = totalGoalDone;
+
+                timerDisplay.style.color = "#00ff00";
+                clearInterval(interval); // pause timer
             } else {
-                button1.style.background = "none"
+                button1.style.background = "none";
                 pp.style.textDecoration = "none";
-                totalGoalDone -= 1
-                c += 1
-                document.getElementById("lef").textContent = c
-                document.getElementById("don").textContent = totalGoalDone
-                // Do something when unchecked
+                totalGoalDone -= 1;
+                c += 1;
+                document.getElementById("lef").textContent = c;
+                document.getElementById("don").textContent = totalGoalDone;
+
+                timerDisplay.style.color = "#009900";
+
+                // resume timer
+                interval = setInterval(() => {
+                    timeLeft--;
+                    if (timeLeft <= originalTime * 60 * 0.5 && timeLeft > originalTime * 60 * 0.25) {
+                        timerDisplay.style.color = "#f92"; // Orange when 50% time is passed
+                    } else if (timeLeft <= originalTime * 60 * 0.25) {
+                        timerDisplay.style.color = "#ff8c00"; // Red/orange when 75% of time is passed
+                    }
+                    if (timeLeft <= 0) {
+                        clearInterval(interval);
+
+                        timerDisplay.textContent = "Time's up!";
+                        timerDisplay.style.color = "#ff0000";
+                        text_div.style.borderColor = "#ff595e";
+                        setTimeout(()=>{
+                            text_div.remove();
+                        }, 1000)
+                    } else {
+                        updateTimerDisplay();
+                    }
+                }, 1000);
                 
             }
         });
-            
+
         //* button2(button that is used for removing specific goals)
         let button2 = document.createElement("button")
-        
         button2.id = 'remove'
         button2.textContent = "Remove"
         button2.style.cssText = `
@@ -90,23 +165,25 @@ function to_do_creation(){
             margin-top: 2px;
             box-shadow: 0px 3px 2px 0px rgb(41, 41, 90);
             border: solid 2px rgb(70, 70, 161);
-            `
-        button2.addEventListener("click", function() {
-            text_div.remove(); 
+        `
+        button2.addEventListener("click", function () {
+            clearInterval(interval); // stop timer if task is removed
+            text_div.remove();
+            if (main_div.children.length === 1) { // Only the empty-msg left
+                document.getElementById("empty-msg").style.display = "block";
+            }
             if (button1.checked) {
-                totalGoalDone -= 1
-                document.getElementById("don").textContent = totalGoalDone
-        
-                }
-            else {
-                c -= 1
-                document.getElementById("lef").textContent = c
-                }
-                a -= 1
-                document.getElementById("cur").textContent = a
+                totalGoalDone -= 1;
+                document.getElementById("don").textContent = totalGoalDone;
+            } else {
+                c -= 1;
+                document.getElementById("lef").textContent = c;
+            }
+            a -= 1;
+            document.getElementById("cur").textContent = a;
         });
-        
-        //*text_div(this is for styling the div which contains users goals)
+
+        //* text_div(this is for styling the div which contains users goals)
         text_div.style.cssText = `
             position: relative;
             border: solid 2px;
@@ -121,86 +198,32 @@ function to_do_creation(){
             padding-right: 160px;
             min-height: 50px;
         `
-        
 
-
-        const timeLimit = parseInt(document.getElementById('time_input').value); 
-
-
-        const timerDisplay = document.createElement('span')
-
-        timerDisplay.style.cssText = `
-            position: absolute;
-            right: 160px;
-            font-weight: bold;
-            color: #009900;
-        `;
-
-        let interval;
-
-        if (!isNaN(timeLimit) && timeLimit > 0) {
-            let timeLeft = timeLimit * 60; 
-        
-            function updateTimerDisplay() {
-                const hrs = Math.floor(timeLeft / 3600);
-                const mins = Math.floor((timeLeft % 3600) / 60);
-                const secs = timeLeft % 60;
-            
-                const h = ('0' + hrs).slice(-2);
-                const m = ('0' + mins).slice(-2);
-                const s = ('0' + secs).slice(-2);
-            
-                timerDisplay.textContent = `${h}:${m}:${s}`;
-            }
-        
-            updateTimerDisplay(); 
-        
-            interval = setInterval(() => {
-                timeLeft--;
-                if (timeLeft <= 0) {
-                    clearInterval(interval);
-                    timerDisplay.textContent = "Time's up!";
-                    timerDisplay.style.color = "#ff0000";
-                    text_div.style.borderColor = "#ff595e";
-                } else {
-                    updateTimerDisplay();
-                }
-            }, 1000);
-        } else {
-            timerDisplay.textContent = 'No timer';
-        }
-        
-
-
-        
-        
+        document.getElementById("empty-msg").style.display = "none";
         //* appending
         text_div.append(timerDisplay)
         text_div.append(button1)
         text_div.append(button2)
-        main_div.append(text_div); 
+        main_div.append(text_div);
         document.getElementById("list_input").value = ""
-        
+
         document.getElementById('error_code').textContent = ""
         a += 1
         c += 1
         document.getElementById("cur").textContent = a
         document.getElementById("lef").textContent = c
-        
 
     }
-    else if(input.value == ""){
+    else if (input.value == "") {
         input.value = ""
         document.getElementById('error_code').textContent = 'Theres nothing to add!'
-
+        
     }
 
-    
 }
 
 //* function for removing evry goal
-function func2(){
-
+function func2() {
     document.getElementById("clear_confirm").style.display = "flex";
 
 }
@@ -214,14 +237,17 @@ document.getElementById("yes").onclick = function () {
     document.getElementById("don").textContent = totalGoalDone;
     document.getElementById("lef").textContent = c;
     main_div.innerHTML = ""
-
-
+    
     document.getElementById("clear_confirm").style.display = "none";
 };
 
 document.getElementById("no").onclick = function () {
     document.getElementById("clear_confirm").style.display = "none";
 };
+
+
+
+
 
 
 

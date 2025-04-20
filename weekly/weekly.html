@@ -15,10 +15,10 @@
             <ul>
                 
                 <li><a href="/index/index.html">Home</a></li>
-                <li><a href="/weekly/weekly.html">Weekly</a></li>
+                <li><a href="/tasks/task.html">tasks</a></li>
                 <li><a href="/challenge/challenge.html">Challenge</a></li>
             </ul>
-            <nav>
+        </nav>
 
     
     </header>
@@ -29,7 +29,7 @@
         <div class="stat-row"><span>Completed:</span><span id="don"></span></div>
         <div class="stat-row"><span>Remaining:</span><span id="lef"></span></div>
     </div>
-    <h1>To Do List</h1>
+
     <div id="container">
         <div id="Sunday" class="day-container">
             <div class="day-header">
@@ -96,12 +96,11 @@
 
     </div> 
     <!--This is a div for user inputs-->
-    <div id="input_container">
-        <input type="text" id="list_input" placeholder="Enter your to do" >
-    
-        <button  id = "but" onclick="to_do_creation()"><b>Add</b></button>
-        <button  id = "but" onclick="func2()"><b>Clear</b></button>
-    </div>
+    <form id="input_container" onsubmit="event.preventDefault();to_do_creation();">
+        <input type="text" id="list_input" placeholder="Enter your to do" required>
+        <button type="submit" id="but"><b>Add</b></button>
+        <button type="button" id="but" onclick="func2()"><b>Clear</b></button>
+    </form>
     
     <!--This is a div to make sure the user wants all their tasks cleared-->
     <div id="clear_confirm">

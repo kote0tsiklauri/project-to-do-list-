@@ -4,41 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Carlito&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/index/style.css">
 </head>
 <body>
-    <!--introduction-->
-    <h1>To Do List</h1>
-    <p><b>Site made to motivate you to achieve your goals <br> 
-        by storing them in this list.<br>
-        So go and get to work</b></p>
+
+        <!--introduction-->
+        <h1>To-Do List</h1>
+        <p><b>
+            Welcome to your personal productivity booster! <br>
+            This site is designed to help you stay motivated and focused <br>
+            by organizing your goals into manageable tasks.<br>
+            Ready to take control of your day? Let's get started!
+        </b></p>
         <!--modes-->
         <h2>Modes:</h2>
         <div id="modes">
             <div id="mode_weekly">
                 <h3>Weekly</h3>
-                <p><b>Create a to do lisk based on week days!<br>
-                    Plan out a whole week in advance!</b></p>
-                    <button onclick="select1()" id="weekly_button">Select</button>
+                <p><b>Create a to-do list based on the days of the week.<br>
+                    Plan your entire week in advance!</b></p>
+                <button onclick="selectWeekly()" id="weekly_button">Select</button>
             </div>
+            
+            <div id="mode_daily">
+                <h3>Daily tasks</h3>
+                <p><b>Receive three random tasks to complete each day.<br>
+                    Stay productive, one day at a time!</b></p>
+                <button onclick="selectDaily()" id="daily_button">Select</button>
+            </div>
+            
             <div id="mode_challenge">
                 <h3>Challenge</h3>
-                <p><b>Create hard challenges for your self!<br>
-                    And complete them in given time!</b></p>
-                    <button onclick="select2()" id="challenge_button">Select</button>
+                <p><b>Create tough challenges for yourself,<br>
+                    and complete them within a set time!</b></p>
+                <button onclick="selectChallenge()" id="challenge_button">Select</button>
             </div>
         </div>
+
         <button onclick="start()" id="start">Get started</button>
 
-        <div id="Service">
-        <h2>Service</h2>
-        <p><b>If you have any complaints about our site.
-            <br> You can get an answer from our customer service group.<br>
-        you will get an answer after sending the message<br>
-        in 1 - 3 buisness bays</b></p>
-        <button id="complaints"><b>File a complaint</b></button>
-        <img src="https://www.howandwhat.net/wp-content/uploads/2017/08/Service.jpg">
+        <div id="info">
+            <img src="/info.png" alt="Customer Service">
+            <div class="info-text">
+                <h2>What You Need to Know About This Site</h2>
+                <p><b>
+                    - You can choose different task modes: Weekly, Daily, or Challenge.<br>
+                    - You don't need to be perfect—just consistent<br>
+                    - You can always switch between modes as you prefer.<br>
+                    - Our goal is to keep you productive and focused.
+                </b></p>
+            </div>
         </div>
+
+        <div id="Service">
+            <h2>Customer Service</h2>
+            <p><b>
+                Have any feedback, questions, or complaints?<br>
+                Our customer support team is here to help you.<br>
+                Expect a response within 1-3 business days after submitting your message.
+            </b></p>
+            <button id="feedback"><b>feedback</b></button>
+            <img src="https://www.howandwhat.net/wp-content/uploads/2017/08/Service.jpg" alt="Customer Service">
+        </div>
+
+
         
         
 
@@ -49,8 +79,8 @@
             <p><b>TDL</b> is a site these 4 people worked on to make your life easier!<br>
                 Site is still under development so if you encounter any bugs let us know :)</p>
             
-            <button>Feedback</button>
-    
+            <button onclick="location.href='/complaint/complaint.html'">feedback</button>
+
         </div>
         <script src="/index/script.js"></script>
 </body>

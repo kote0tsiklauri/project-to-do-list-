@@ -306,7 +306,7 @@ window.onload = function () {
             font-size: 18px;
         `;
 
-        const message2 = "Ready to crush your weekly goals? Just type in whatever you’d like to achieve!";
+        const message2 = "Ready to crush your weekly goals? Just type in whatever you'd like to achieve!";
         let i = 0;
 
         function typeText() {
