@@ -64,6 +64,57 @@ for (let i = 0;i < selectedTasks.length;i++) {
         transition: all 0.2s ease-in-out;
     `;
 
+    //* text timer display
+    const timerDisplay = document.createElement('span')
+    timerDisplay.style.cssText = `
+        position: absolute;
+        right: 8%;
+        font-weight: bold;
+        color: #009900;
+    `;
+
+    //* timer and countdown
+    const originalTime = 86400; // 24 hours in seconds
+    let timeLeft = originalTime;
+    let interval;
+
+    function updateTimerDisplay() {
+        const hrs = Math.floor(timeLeft / 3600);
+        const mins = Math.floor((timeLeft % 3600) / 60);
+        const secs = timeLeft % 60;
+
+        const h = ('0' + hrs).slice(-2);
+        const m = ('0' + mins).slice(-2);
+        const s = ('0' + secs).slice(-2);
+
+        timerDisplay.textContent = `${h}:${m}:${s}`;
+    }
+
+    function startTimer() {
+        updateTimerDisplay();
+
+        interval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+
+            if (timeLeft <= originalTime * 0.5 && timeLeft > originalTime * 0.25) {
+                timerDisplay.style.color = "#f92";
+            } else if (timeLeft <= originalTime * 0.25) {
+                timerDisplay.style.color = "#ff8c00";
+            }
+
+            if (timeLeft <= 0) {
+                clearInterval(interval);
+                timerDisplay.textContent = "Time's up!";
+                timerDisplay.style.color = "#ff0000";
+                text_div.style.borderColor = "#ff595e";
+                setTimeout(() => text_div.remove(), 1000);
+            }
+        }, 1000);
+    }
+
+    startTimer();
+
     button1.addEventListener("change", function () {
         button1.style.animation = "none";
         void button1.offsetWidth;
@@ -75,23 +126,28 @@ for (let i = 0;i < selectedTasks.length;i++) {
             totalGoalDone += 1;
             document.getElementById("don").textContent = totalGoalDone;
     
-            
             document.getElementById("cur").textContent = a;
     
             c -= 1;
             document.getElementById("lef").textContent = c;
     
-        } else {
+            timerDisplay.style.color = "#00ff00";
+            clearInterval(interval);
+    
+        }  else {
             button1.style.background = "none";
             taskItem.style.textDecoration = "none";
             totalGoalDone -= 1;
             document.getElementById("don").textContent = totalGoalDone;
-    
-            
+        
             document.getElementById("cur").textContent = a;
-    
             c += 1;
             document.getElementById("lef").textContent = c;
+        
+            timerDisplay.style.color = "#009900";
+        
+            clearInterval(interval);
+            startTimer(); // resume the timer using saved timeLeft
         }
         if (totalGoalDone === 3) {
             let congrats = document.createElement("div");
@@ -171,7 +227,7 @@ for (let i = 0;i < selectedTasks.length;i++) {
             document.body.appendChild(congrats);
         }
     });
-
+    text_div.append(timerDisplay)
     text_div.appendChild(taskItem);
     text_div.append(button1)
     main_div.appendChild(text_div);
