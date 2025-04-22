@@ -62,6 +62,7 @@ function to_do_creation(){
             if (button1.checked) {
                 button1.style.background = "#4e4caf"
                 pp.style.textDecoration = "line-through";
+                text_div.style.borderColor = "#00ff00";
                 totalGoalDone += 1
                 c -= 1
                 document.getElementById("lef").textContent = c
@@ -70,6 +71,7 @@ function to_do_creation(){
             } else {
                 button1.style.background = "none"
                 pp.style.textDecoration = "none";
+                text_div.style.borderColor = "#4895ef";
                 totalGoalDone -= 1
                 c += 1
                 document.getElementById("lef").textContent = c
@@ -218,6 +220,7 @@ window.onload = function () {
         background-color: rgba(0,0,0,0.5);
         justify-content: center;
         align-items: center;
+        z-index: 1000;
     `;
 
     const innerDiv = document.createElement("div");
@@ -286,6 +289,7 @@ window.onload = function () {
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         `;
 
         const secondInnerDiv = document.createElement("div");

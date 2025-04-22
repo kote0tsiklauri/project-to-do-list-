@@ -68,7 +68,7 @@ for (let i = 0;i < selectedTasks.length;i++) {
     const timerDisplay = document.createElement('span')
     timerDisplay.style.cssText = `
         position: absolute;
-        right: 8%;
+        right: 80px;
         font-weight: bold;
         color: #009900;
     `;
@@ -122,6 +122,7 @@ for (let i = 0;i < selectedTasks.length;i++) {
     
         if (button1.checked) {
             button1.style.background = "#4e4caf";
+            text_div.style.borderColor = "#00ff00";
             taskItem.style.textDecoration = "line-through";
             totalGoalDone += 1;
             document.getElementById("don").textContent = totalGoalDone;
@@ -137,6 +138,7 @@ for (let i = 0;i < selectedTasks.length;i++) {
         }  else {
             button1.style.background = "none";
             taskItem.style.textDecoration = "none";
+            text_div.style.borderColor = "#4895ef";
             totalGoalDone -= 1;
             document.getElementById("don").textContent = totalGoalDone;
         
@@ -235,27 +237,6 @@ for (let i = 0;i < selectedTasks.length;i++) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 window.onload = function () {
 
 
@@ -273,6 +254,7 @@ window.onload = function () {
         background-color: rgba(0,0,0,0.5);
         justify-content: center;
         align-items: center;
+        z-index: 1000;
     `;
 
     const innerDiv = document.createElement("div");
@@ -341,6 +323,7 @@ window.onload = function () {
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         `;
 
         const secondInnerDiv = document.createElement("div");

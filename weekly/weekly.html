@@ -11,11 +11,11 @@
     <header>
         <nav>
             <img src="/Untitled.png" alt="error">
-            <h1>To Do List</h1>
+            <h1><a href="/index/index.html">To Do List</a></h1>
             <ul>
                 
                 <li><a href="/index/index.html">Home</a></li>
-                <li><a href="/tasks/task.html">tasks</a></li>
+                <li><a href="/tasks/task.html">Tasks</a></li>
                 <li><a href="/challenge/challenge.html">Challenge</a></li>
             </ul>
         </nav>
@@ -98,8 +98,8 @@
     <!--This is a div for user inputs-->
     <form id="input_container" onsubmit="event.preventDefault();to_do_creation();">
         <input type="text" id="list_input" placeholder="Enter your to do" required>
-        <button type="submit" id="but"><b>Add</b></button>
-        <button type="button" id="but" onclick="func2()"><b>Clear</b></button>
+        <button type="submit" id="add_btn"><b>Add</b></button>
+        <button type="button" id="clear_btn" onclick="func2()"><b>Clear</b></button>
     </form>
     
     <!--This is a div to make sure the user wants all their tasks cleared-->
@@ -122,7 +122,7 @@
         <p><b>TDL</b> is a site these 4 people worked on to make your life easier!<br>
             Site is still under development so if you encounter any bugs let us know :)</p>
         
-        <button>Feedback</button>
+            <button onclick="location.href='/complaint/complaint.html'">feedback</button>
 
     </div>
 

@@ -66,11 +66,9 @@ a{
     text-decoration: none;
     
 }
-ul a:hover{
+a:hover{
     color: rgb(195, 195, 195);
-    font-size: 20px;
     transition: all 0.1s ease;
-    
 }
 
 
@@ -84,16 +82,10 @@ ul a:hover{
     background-color: #f2f2f2;
     border-radius: 8px;
     margin-top: 30px;
-    
 }
 
 /** -------------------------------------------- */
 
-#empty-msg {
-    font-size: 18px;
-    color: #666;
-    margin-top: 30px;
-}
 
 /** ინფუთის და დამათებიტ ღილაკების კონტეინერი */
 #input_container {
@@ -195,8 +187,8 @@ button{
 }
 
 /** დამატების ღილაკის გასტილვა */
-#but {
-    width: 20%;
+#add_btn ,#clear_btn {
+    width: 15%;
     aspect-ratio: 1/1;
     
     border-radius: 4px;
@@ -208,14 +200,14 @@ button{
     box-shadow: 0px 5px 2px 0px rgb(46, 0, 0);
 }
 
-#but:hover {
+#add_btn:hover ,#clear_btn:hover {
     color:#74abc0;
     box-shadow: 0px 5px 2px 0px rgb(46, 0, 0);
     transition: all 0.1s ease;
     border: none;
 }
 
-#but:active {
+#add_btn:active ,#clear_btn:active {
     background-color: #46a7b4;
     color: white;
     border: none;
@@ -417,7 +409,7 @@ button{
     }
     #stats {
         position: static;
-        width: 70%; 
+        width: 30%; 
         margin-top: 20px;
         margin-bottom: 20px;
         aspect-ratio: auto;
@@ -469,7 +461,7 @@ button{
 
 @media screen and (max-width: 650px){
     body {
-        margin: 20px 0;
+        margin: 0px 0;
         padding: 0;
         display: flex;
         flex-direction: column;
@@ -483,9 +475,9 @@ button{
     #footer {
         width: 100%;
     }
-    nav h1{
+    nav h1 a{
         
-        font-size: 20px;
+        display: none;
         
     }
     nav{
@@ -509,7 +501,7 @@ button{
     #list_input {
         width: 50%;
     }
-    #but{
+    #add_btn ,#clear_btn {
         width: 7%;
         aspect-ratio: 1/1;
     }
@@ -540,24 +532,24 @@ button{
 }
 
 @media screen and (max-width: 640px){
-    #but{
-        width: 8%;
+    #add_btn ,#clear_btn {
+        width: 11%;
     }
 }
 @media screen and (max-width: 590px){
-    #but{
-        width: 9%;
+    #add_btn ,#clear_btn {
+        width: 13%;
     }
 }
 
 @media screen and (max-width: 540px){
-    #but{
-        width: 10%;
+    #add_btn ,#clear_btn {
+        width: 15%;
     }
 }
 @media screen and (max-width: 490px){
-    #but{
-        width: 11%;
+    #add_btn ,#clear_btn {
+        width: 16%;
     }
     nav h1{
         font-size: 15px;
@@ -566,18 +558,18 @@ button{
 }
 
 @media screen and (max-width: 450px){
-    #but{
-        width: 12%;
+    #add_btn ,#clear_btn {
+        width:18%;
     }
 }
 @media screen and (max-width: 390px){
-    #but{
-        width: 13%;
+    #add_btn ,#clear_btn {
+        width: 19%;
     }
 }
 
 @media screen and (max-width: 350px){
-    #but{
-        width: 14%;
+    #add_btn ,#clear_btn {
+        width: 30%;
     }
 }

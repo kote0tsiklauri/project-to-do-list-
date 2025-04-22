@@ -276,7 +276,7 @@ button{
 
 @media screen and (max-width: 650px){
     body {
-        margin: 20px 0;
+        margin: 0 0;
         padding: 0;
         display: flex;
         flex-direction: column;
@@ -290,9 +290,10 @@ button{
     #footer {
         width: 100%;
     }
+    
     nav h1{
         
-        font-size: 20px;
+        display: none;
         
     }
     nav{
@@ -366,8 +367,11 @@ button{
     #but{
         width: 11%;
     }
-    nav h1{
-        font-size: 15px;
-        right:20px;
+    
+}
+
+@media screen and (max-width: 390px) {
+    nav {
+        gap: 0px;
     }
 }

@@ -107,6 +107,7 @@ function to_do_creation() {
 
             if (button1.checked) {
                 button1.style.background = "#4e4caf";
+                text_div.style.borderColor = "#00ff00";
                 pp.style.textDecoration = "line-through";
                 totalGoalDone += 1;
                 c -= 1;
@@ -118,6 +119,7 @@ function to_do_creation() {
             } else {
                 button1.style.background = "none";
                 pp.style.textDecoration = "none";
+                text_div.style.borderColor = "#4895ef";
                 totalGoalDone -= 1;
                 c += 1;
                 document.getElementById("lef").textContent = c;
@@ -159,12 +161,12 @@ function to_do_creation() {
             width: 60px; 
             position: absolute; 
             right: 10px; 
-            background-color: #feb6b8; 
+            background-color:rgb(255, 255, 255); 
             border-radius: 6px; 
             border: 6px; 
             margin-top: 2px;
-            box-shadow: 0px 3px 2px 0px rgb(41, 41, 90);
-            border: solid 2px rgb(70, 70, 161);
+            box-shadow: 0px 3px 2px 0px rgb(13, 27, 43);
+            border: solid 2px #4895ef;
         `
         button2.addEventListener("click", function () {
             clearInterval(interval); // stop timer if task is removed
@@ -195,7 +197,7 @@ function to_do_creation() {
             border-radius: 6px;
             margin-top: 10px;
             box-shadow: 0px 3px 2px 0px rgb(13, 27, 43);
-            padding-right: 160px;
+            padding-right: 200px;
             min-height: 50px;
         `
 
@@ -205,8 +207,10 @@ function to_do_creation() {
         text_div.append(button1)
         text_div.append(button2)
         main_div.append(text_div);
-        document.getElementById("list_input").value = ""
 
+        document.getElementById('time_input').value = ""
+        document.getElementById("list_input").value = ""
+        
         document.getElementById('error_code').textContent = ""
         a += 1
         c += 1
@@ -229,16 +233,32 @@ function func2() {
 }
 
 document.getElementById("yes").onclick = function () {
-    //* ყველა თასქის წაშლა
+    // Reset all counts
     a = 0;
-    totalGoalDone = 0;
     c = 0;
+    totalGoalDone = 0;
+
+    // Update the numbers shown on screen
     document.getElementById("cur").textContent = a;
     document.getElementById("don").textContent = totalGoalDone;
     document.getElementById("lef").textContent = c;
-    main_div.innerHTML = ""
-    
+
+    // Remove all tasks (except the empty message)
+    let tasks = document.getElementById("container").children;
+    for (let i = tasks.length - 1; i >= 0; i--) {
+        if (tasks[i].id !== "empty-msg") {
+            tasks[i].remove();
+        }
+    }
+
+    // Show the "empty" message again
+    document.getElementById("empty-msg").style.display = "block";
+
+    // Close the confirm popup
     document.getElementById("clear_confirm").style.display = "none";
+
+    // Clear the input box
+    document.getElementById("list_input").value = "";
 };
 
 document.getElementById("no").onclick = function () {
@@ -272,6 +292,7 @@ window.onload = function () {
         background-color: rgba(0,0,0,0.5);
         justify-content: center;
         align-items: center;
+        z-index: 1000;
     `;
 
     const innerDiv = document.createElement("div");
@@ -340,6 +361,7 @@ window.onload = function () {
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         `;
 
         const secondInnerDiv = document.createElement("div");
