@@ -265,9 +265,18 @@ document.getElementById("no").onclick = function () {
     document.getElementById("clear_confirm").style.display = "none";
 };
 
+document.getElementById("menu-toggle").addEventListener("click", function() {
+    const navList = document.getElementById("nav-list");
 
-
-
+    // Only toggle if screen width is 540px or less
+    if (window.innerWidth <= 540) {
+        if (navList.style.display === "flex") {
+            navList.style.display = "none";
+        } else {
+            navList.style.display = "flex";
+        }
+    }
+});
 
 
 

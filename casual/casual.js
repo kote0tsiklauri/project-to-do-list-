@@ -1,4 +1,3 @@
-//creating variables
 let main_div = document.getElementById('container')
 let input = document.getElementById('list_input')
 let dd = null;
@@ -10,21 +9,14 @@ document.getElementById("don").textContent = totalGoalDone
 document.getElementById("lef").textContent = c
 
 
-function to_do_creation(){
+function to_do_creation() {
 
-    if(input.value !== "") { 
-        //* defult setting if no days is chosen 
-        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
-        let today = days[new Date().getDay()]; 
-        
-        let chosenDay = dd ? dd : today; //* if any of the days are chosen the day will have meaning and if not it will be null(line3)
-        let todayContainer = document.getElementById(chosenDay).querySelector('.day-tasks');
-
+    if (input.value !== "") {
 
         let text_div = document.createElement("div")
 
         //* input value
-        let pp = document.createElement('p')    
+        let pp = document.createElement('p')
         pp.textContent = input.value
         pp.style.cssText = `
             font-size: 20px;
@@ -34,14 +26,11 @@ function to_do_creation(){
             flex-grow: 1;
         `;
         text_div.append(pp)
-        
 
         //* button1(checkbox if user has finished his goal)
         let button1 = document.createElement("input")
-        
         button1.type = "checkbox";
         button1.id = "complete";
-
         button1.style.cssText = `
             height: 25px;
             width: 25px;
@@ -54,36 +43,39 @@ function to_do_creation(){
             outline: none;
             transition: all 0.2s ease-in-out;
         `;
-        button1.addEventListener("change", function () {  //*this function is mainly for checking of done goals and counting tham
+
+
+
+        //* this function is mainly for checking of done goals and counting them
+        button1.addEventListener("change", function () {
             button1.style.animation = "none";
             void button1.offsetWidth;
             button1.style.animation = "pop 0.3s ease";
-            
+
             if (button1.checked) {
-                button1.style.background = "#4e4caf"
-                pp.style.textDecoration = "line-through";
+                button1.style.background = "#4e4caf";
                 text_div.style.borderColor = "#00ff00";
-                totalGoalDone += 1
-                c -= 1
-                document.getElementById("lef").textContent = c
-                document.getElementById("don").textContent = totalGoalDone
-                // Do something when checked
+                pp.style.textDecoration = "line-through";
+                totalGoalDone += 1;
+                c -= 1;
+                document.getElementById("lef").textContent = c;
+                document.getElementById("don").textContent = totalGoalDone;
+            
             } else {
-                button1.style.background = "none"
+                button1.style.background = "none";
                 pp.style.textDecoration = "none";
                 text_div.style.borderColor = "#4895ef";
-                totalGoalDone -= 1
-                c += 1
-                document.getElementById("lef").textContent = c
-                document.getElementById("don").textContent = totalGoalDone
-                // Do something when unchecked
+                totalGoalDone -= 1;
+                c += 1;
+                document.getElementById("lef").textContent = c;
+                document.getElementById("don").textContent = totalGoalDone;
+
                 
             }
         });
-            
+
         //* button2(button that is used for removing specific goals)
         let button2 = document.createElement("button")
-        
         button2.id = 'remove'
         button2.textContent = "Remove"
         button2.style.cssText = `
@@ -97,23 +89,24 @@ function to_do_creation(){
             margin-top: 2px;
             box-shadow: 0px 3px 2px 0px rgb(13, 27, 43);
             border: solid 2px #4895ef;
-            `
-        button2.addEventListener("click", function() {
-            text_div.remove(); 
+        `
+        button2.addEventListener("click", function () {
+            text_div.remove();
+            if (main_div.children.length === 1) { // Only the empty-msg left
+                document.getElementById("empty-msg").style.display = "block";
+            }
             if (button1.checked) {
-                totalGoalDone -= 1
-                document.getElementById("don").textContent = totalGoalDone
-        
-                }
-            else {
-                c -= 1
-                document.getElementById("lef").textContent = c
-                }
-                a -= 1
-                document.getElementById("cur").textContent = a
+                totalGoalDone -= 1;
+                document.getElementById("don").textContent = totalGoalDone;
+            } else {
+                c -= 1;
+                document.getElementById("lef").textContent = c;
+            }
+            a -= 1;
+            document.getElementById("cur").textContent = a;
         });
-        
-        //*text_div(this is for styling the div which contains users goals)
+
+        //* text_div(this is for styling the div which contains users goals)
         text_div.style.cssText = `
             position: relative;
             border: solid 2px;
@@ -125,16 +118,17 @@ function to_do_creation(){
             border-radius: 6px;
             margin-top: 10px;
             box-shadow: 0px 3px 2px 0px rgb(13, 27, 43);
-            padding-right: 160px;
-            min-height: 50px;`
-        
+            padding-right: 150px;
+            min-height: 50px;
+        `
 
-        
-
+        document.getElementById("empty-msg").style.display = "none";
         //* appending
         text_div.append(button1)
         text_div.append(button2)
-        todayContainer.append(text_div); 
+        main_div.append(text_div);
+
+
         document.getElementById("list_input").value = ""
         
         document.getElementById('error_code').textContent = ""
@@ -142,62 +136,56 @@ function to_do_creation(){
         c += 1
         document.getElementById("cur").textContent = a
         document.getElementById("lef").textContent = c
-        
 
     }
-    //errors
-    else if(input.value == ""){
+    else if (input.value == "") {
         input.value = ""
         document.getElementById('error_code').textContent = 'Theres nothing to add!'
-
+        
     }
-    
+
 }
 
-
 //* function for removing evry goal
-function func2(){
-
+function func2() {
     document.getElementById("clear_confirm").style.display = "flex";
 
 }
 
 document.getElementById("yes").onclick = function () {
-    //* ყველა თასქის წაშლა
-    let days = document.getElementsByClassName("day-container");
+    // Reset all counts
     a = 0;
-    totalGoalDone = 0;
     c = 0;
+    totalGoalDone = 0;
+
+    // Update the numbers shown on screen
     document.getElementById("cur").textContent = a;
     document.getElementById("don").textContent = totalGoalDone;
     document.getElementById("lef").textContent = c;
-    for (let i = 0; i < days.length; i++) {
-        let taskList = days[i].querySelector('.day-tasks');
-        taskList.innerHTML = "";
+
+    // Remove all tasks (except the empty message)
+    let tasks = document.getElementById("container").children;
+    for (let i = tasks.length - 1; i >= 0; i--) {
+        if (tasks[i].id !== "empty-msg") {
+            tasks[i].remove();
+        }
     }
 
+    // Show the "empty" message again
+    document.getElementById("empty-msg").style.display = "block";
 
+    // Close the confirm popup
     document.getElementById("clear_confirm").style.display = "none";
+
+    // Clear the input box
+    document.getElementById("list_input").value = "";
 };
 
 document.getElementById("no").onclick = function () {
     document.getElementById("clear_confirm").style.display = "none";
 };
 
-//toggle to show and hide daycontainers children
-function toggleDay(dayId) {
-    const dayContainer = document.getElementById(dayId);
-    const taskList = dayContainer.querySelector('.day-tasks');
-    const toggleButton = dayContainer.querySelector('.toggle-button');
-    
-    if (taskList.style.display === 'none' || taskList.style.display === '') {
-        taskList.style.display = 'block';
-        toggleButton.textContent = 'Hide';  // Change button text to 'Hide'
-    } else {
-        taskList.style.display = 'none';
-        toggleButton.textContent = 'Show';  // Change button text to 'Show'
-    }
-}
+
 
 document.getElementById("menu-toggle").addEventListener("click", function() {
     const navList = document.getElementById("nav-list");
@@ -212,9 +200,8 @@ document.getElementById("menu-toggle").addEventListener("click", function() {
     }
 });
 
-
-//greetings to user
 window.onload = function () {
+
     let taskLists = document.querySelectorAll('.day-tasks');
     for (let i = 0; i < taskLists.length; i++) {
         taskLists[i].style.display = 'block';
@@ -255,7 +242,7 @@ window.onload = function () {
         font-size: 18px;
     `;
 
-    const message = "Welcome! We're glad you're here.";
+    const message = "Welcome! Here, you are free to do as you like.";
     let i = 0;
 
     function typeText() {
@@ -280,7 +267,7 @@ window.onload = function () {
         box-shadow: 0px 3px 2px 0px rgb(41, 41, 90);
     `;
 
-    innerDiv.appendChild(text);
+    innerDiv.appendChild(text)
     innerDiv.appendChild(nextGreet);
     greeting.appendChild(innerDiv);
     document.body.appendChild(greeting);
@@ -324,14 +311,14 @@ window.onload = function () {
             font-size: 18px;
         `;
 
-        const message2 = "Ready to crush your weekly goals? Just type in whatever you'd like to achieve!";
+        const message2 = "Make your own goals with no limits or any hidden feature";
         let i = 0;
 
         function typeText() {
             if (i < message2.length) {
                 secondText.textContent += message2.charAt(i);
                 i++;
-                setTimeout(typeText, 35); //* speed (milliseconds)
+                setTimeout(typeText, 50); //* speed (milliseconds)
             } 
         }
 
@@ -345,10 +332,9 @@ window.onload = function () {
             background-color:rgb(17, 211, 40);
             border-radius: 10px;
             border: none;
-            
             box-shadow: 0px 3px 2px 0px rgb(10, 46, 3);
             cursor: pointer;
-        `
+        `;
 
         finishBtn.onclick = function () {
             document.body.removeChild(secondGreeting);
@@ -359,8 +345,8 @@ window.onload = function () {
         secondInnerDiv.appendChild(finishBtn);
         secondGreeting.appendChild(secondInnerDiv);
         document.body.appendChild(secondGreeting);
-    }
-}
+    };
+    
 
-
-
+    
+};

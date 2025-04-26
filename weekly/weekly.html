@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Carlito&display=swap" rel="stylesheet">
     <title>To do list</title>
     
     <link rel="stylesheet" href="/weekly/weekly.css">
@@ -10,19 +11,22 @@
 <body>
     <header>
         <nav>
+            
             <img src="/Untitled.png" alt="error" onclick="location.href='/index/index.html'">
             <h1><a href="/index/index.html">To Do List</a></h1>
-            <ul>
-                
-                <li><a href="/index/index.html">Home</a></li>
+            <div id="menu-toggle">&#x2261;</div> <!-- Unicode for ☰ -->
+
+            <ul id="nav-list">
+                <li><a href="/casual/casual.html">Casual</a></li>
+                <li><a href="/challenge/challenge.html">challenge</a></li>
                 <li><a href="/tasks/task.html">Tasks</a></li>
-                <li><a href="/challenge/challenge.html">Challenge</a></li>
+                <li><a href="/login/login.html">Login</a></li>
             </ul>
         </nav>
 
     
     </header>
-    
+
     <div id="stats">
         <h3>Stats:</h3>
         <div class="stat-row"><span>Total:</span><span id="cur"></span></div>

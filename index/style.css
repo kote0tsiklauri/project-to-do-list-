@@ -145,7 +145,7 @@ img {
     margin: 10px;
 }
 
-#mode_challenge, #mode_daily {
+#mode_challenge, #mode_daily, #mode_casual {
     border: #006cbe solid 2px;
     border-radius: 6px;
     display: flex;
@@ -160,7 +160,8 @@ img {
 
 #mode_weekly:hover,
 #mode_challenge:hover,
-#mode_daily:hover {
+#mode_daily:hover,
+#mode_casual:hover {
     transform: scale(1.03);
     transition: transform 0.2s ease;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
@@ -172,6 +173,7 @@ img {
     margin-top: 30px;
     width: 100%;
     background: RGBA(87, 123, 255, 0.40);
+    height: fit-content;
     
 }
 #feedback {
@@ -320,6 +322,3 @@ img {
         width: 100%;
     }
 }
-
-
-

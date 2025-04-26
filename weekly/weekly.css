@@ -44,6 +44,21 @@ nav h1{
     position: fixed;
     left: 30%;
 }
+
+#menu-toggle {
+    display: none;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#nav-list{
+    margin-right: 90px;
+}
+
+
+
 ul{
     display:flex;
     flex-direction: row;
@@ -533,6 +548,24 @@ img {
     #add_btn ,#clear_btn {
         width: 10%;
     }
+
+    #menu-toggle {
+        display: block;
+    }
+    
+    
+    #nav-list {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 100, 255, 0.7);
+        position: absolute;
+        top: 90px;
+        right: 0px;
+        width: 200px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        z-index: 10000;
+    }
 }
 @media screen and (max-width: 490px){
     #add_btn ,#clear_btn {
@@ -551,6 +584,9 @@ img {
 @media screen and (max-width: 390px){
     #add_btn ,#clear_btn {
         width: 13%;
+    }
+    nav ul{
+        gap: 10px;
     }
 }
 

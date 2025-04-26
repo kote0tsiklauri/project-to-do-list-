@@ -27,6 +27,15 @@
         <!--modes-->
         <h2>Modes:</h2>
         <div id="modes">
+
+            <div id="mode_casual">
+                <h3>casual</h3>
+                <p><b>Make a simple to-do list, set your own goals,<br>
+                    and finish them at your own pace by the end of the day!</b></p>
+                <button onclick="selectCasual()" id="casual_button">Select</button>
+            </div>
+
+
             <div id="mode_weekly">
                 <h3>Weekly</h3>
                 <p><b>Create a to-do list based on the days of the week.<br>
@@ -47,7 +56,11 @@
                     and complete them within a set time!</b></p>
                 <button onclick="selectChallenge()" id="challenge_button">Select</button>
             </div>
+            
+
         </div>
+        
+    </div>
 
         <button onclick="start()" id="start">Get started</button>
 
