@@ -50,6 +50,20 @@ nav h1{
     position: fixed;
     left: 30%;
 }
+
+#menu-toggle {
+    display: none;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#nav-list{
+    margin-right: 90px;
+}
+
+
 ul{
     display:flex;
     flex-direction: row;
@@ -57,7 +71,7 @@ ul{
     gap: 10%;
     list-style: none;
     font-size: larger;
-    margin-right: 60px;
+
 }
 
 
@@ -72,6 +86,20 @@ ul a:hover{
     transition: all 0.1s ease;
     
 }
+
+/** სკროლბარის გასტილვა */
+::-webkit-scrollbar {
+    border-radius: 3px;
+    background-color: #004e89;
+    width: 7px;
+    
+}
+::-webkit-scrollbar-thumb {
+    background-color: #071b3a;
+    border-radius: 3px;
+}
+
+
 
 
 /** მიზნების კონტაინერის გასტილვა*/
@@ -317,10 +345,7 @@ button{
     #list_input {
         width: 50%;
     }
-    #but{
-        width: 7%;
-        aspect-ratio: 1/1;
-    }
+    
     
     #stats {
         position: static;
@@ -347,31 +372,36 @@ button{
     }
 }
 
-@media screen and (max-width: 640px){
-    #but{
-        width: 8%;
+
+@media screen and (max-width: 540px){
+    #menu-toggle {
+        display: block;
     }
-}
-@media screen and (max-width: 590px){
-    #but{
-        width: 9%;
+    
+    
+    #nav-list {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 100, 255, 0.7);
+        position: absolute;
+        top: 90px;
+        right: 0px;
+        width: 200px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        z-index: 10000;
     }
 }
 
-@media screen and (max-width: 540px){
-    #but{
-        width: 10%;
-    }
-}
-@media screen and (max-width: 490px){
-    #but{
-        width: 11%;
-    }
-    
-}
+
+
+
 
 @media screen and (max-width: 390px) {
     nav {
         gap: 0px;
+    }
+    nav ul{
+        gap: 10px;
     }
 }
